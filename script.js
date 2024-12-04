@@ -1,3 +1,20 @@
+const animalImages = {
+    insect: new Image(),
+    frog: new Image(),
+    bird: new Image(),
+    rat: new Image(),
+    fox: new Image(),
+    eagle: new Image(),
+};
+
+// Defina as fontes das imagens apontando para a pasta 'assets'
+animalImages.insect.src = 'assets/insect.png';
+animalImages.frog.src = 'assets/frog.png';
+animalImages.bird.src = 'assets/bird.png';
+animalImages.rat.src = 'assets/rat.png';
+animalImages.fox.src = 'assets/fox.png';
+animalImages.eagle.src = 'assets/eagle.png';
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 800;
@@ -36,6 +53,19 @@ function updateBackground() {
     ];
     document.querySelector(".game-container").style.background = backgrounds[round - 1] || "#ffffff";
 }
+// Função para verificar se todas as imagens estão carregadas
+function checkImagesLoaded() {
+    return Object.values(animalImages).every(img => img.complete);
+}
+
+// Adiciona o evento onload para cada imagem
+Object.values(animalImages).forEach(image => {
+    image.onload = () => {
+        if (checkImagesLoaded()) {
+            startGame(); // Inicia o jogo quando todas as imagens forem carregadas
+        }
+    };
+});
 
 // Inicializa o round
 function setupRound() {
@@ -67,12 +97,21 @@ function spawnEntity(type) {
     };
 }
 
-// Desenha entidades
-function drawEntity(entity, color) {
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.arc(entity.x, entity.y, entity.size, 0, Math.PI * 2);
-    ctx.fill();
+function drawEntity(entity) {
+    const image = animalImages[entity.type];
+    if (image) {
+        // Desenha a imagem centralizada no ponto da entidade
+        ctx.drawImage(image, entity.x - entity.size / 2, entity.y - entity.size / 2, entity.size, entity.size);
+    }
+
+    // Desenha o nome do animal acima dele
+    const animal = animalData[entity.type];
+    const name = animal ? animal.name : "Desconhecido";
+    ctx.fillStyle = "black";
+    ctx.font = "14px Arial";
+    ctx.fillText(name, entity.x - ctx.measureText(name).width / 2, entity.y - entity.size - 10);
+}
+
 
     // Desenha o nome do animal acima dele
     const animal = animalData[entity.type];
