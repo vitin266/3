@@ -3,14 +3,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = 800;
 canvas.height = 600;
 
-const animalImages = {
-    insect: new Image(),
-    frog: new Image(),
-    bird: new Image(),
-    rat: new Image(),
-    fox: new Image(),
-    eagle: new Image(),
-};
 
 // Carregar as imagens para cada tipo de animal
 animalImages.insect.src = 'assets/snake.png';  // Substitua pelo caminho correto da imagem do inseto
@@ -20,6 +12,14 @@ animalImages.rat.src = 'assets/rat.png';        // Substitua pelo caminho corret
 animalImages.fox.src = 'assets/fox.png';        // Substitua pelo caminho correto da imagem da raposa
 animalImages.eagle.src = 'assets/eagle.png';    // Substitua pelo caminho correto da imagem da águia
 
+const animalImages = {
+    insect: new Image(),
+    frog: new Image(),
+    bird: new Image(),
+    rat: new Image(),
+    fox: new Image(),
+    eagle: new Image(),
+};
 
 let round = 1;
 let score = 0;
