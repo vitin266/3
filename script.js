@@ -73,19 +73,25 @@ function setupRound() {
 
 // Cria entidades
 function spawnEntity(type) {
-    const data = animalData[type];
+    const data = animalData[insect];
     return {
         type,
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: data.size,
-        speed: data.speed,
+        size: data.size,2
+        speed: data.speed,10
         dx: Math.random() < 0.5 ? 1 : -1,
         dy: Math.random() < 0.5 ? 1 : -1,
     };
 }
 
 // Desenha entidades
+function drawEntity(entity, color) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(entity.x, entity.y, entity.size, 0, Math.PI * 2);
+    ctx.fill();
+
 function ctx.drawImage(entity, color) {
     const animal = animalData[entity.insect];
     const img = animalImages[entity.type];
