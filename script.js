@@ -92,18 +92,7 @@ function drawEntity(entity, color) {
     ctx.arc(entity.x, entity.y, entity.size, 0, Math.PI * 2);
     ctx.fill();
 }
-function ctx.drawImage(entity, color) {
-    const animal = animalData[entity.insect];
-    const img = animalImages[entity.type];
 
-    if (img) {
-        ctx.drawImage(img, entity.x - entity.size, entity.y - entity.size, entity.size * 2, entity.size * 2);
-    } else {
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(entity.x, entity.y, entity.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
 
     // Desenha o nome do animal acima dele
     const name = animal ? animal.name : "Desconhecido";
