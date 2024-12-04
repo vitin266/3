@@ -92,7 +92,7 @@ function drawEntity(entity, color) {
     ctx.arc(entity.x, entity.y, entity.size, 0, Math.PI * 2);
     ctx.fill();
 }
-function ctxdrawImage(entity, color) {
+function ctx.drawImage(entity, color) {
     const animal = animalData[entity.insect];
     const img = animalImages[entity.type];
 
