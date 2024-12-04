@@ -78,8 +78,8 @@ function spawnEntity(type) {
         type,
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: data.size,2
-        speed: data.speed,10
+        size: data.size,
+        speed: data.speed,
         dx: Math.random() < 0.5 ? 1 : -1,
         dy: Math.random() < 0.5 ? 1 : -1,
     };
@@ -91,8 +91,8 @@ function drawEntity(entity, color) {
     ctx.beginPath();
     ctx.arc(entity.x, entity.y, entity.size, 0, Math.PI * 2);
     ctx.fill();
-
-function ctx.drawImage(entity, color) {
+}
+function ctxdrawImage(entity, color) {
     const animal = animalData[entity.insect];
     const img = animalImages[entity.type];
 
