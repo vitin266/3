@@ -55,7 +55,7 @@ function setupRound() {
 
 // Cria entidades
 function spawnEntity(type) {
-    const data = animalData[insect];
+    const data = animalData[type];
     return {
         type,
         x: Math.random() * canvas.width,
@@ -73,16 +73,14 @@ function drawEntity(entity, color) {
     ctx.beginPath();
     ctx.arc(entity.x, entity.y, entity.size, 0, Math.PI * 2);
     ctx.fill();
-}
-
 
     // Desenha o nome do animal acima dele
+    const animal = animalData[entity.type];
     const name = animal ? animal.name : "Desconhecido";
     ctx.fillStyle = "black";
     ctx.font = "14px Arial";
     ctx.fillText(name, entity.x - ctx.measureText(name).width / 2, entity.y - entity.size - 10);
 }
-
 
 // Movimenta o jogador
 function movePlayer() {
